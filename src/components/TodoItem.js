@@ -5,19 +5,15 @@
 　・チェックボックスにチェックが入っているかアイテムをグレーアウトする
 */
 import {useState} from 'react';
-function TodoItem({item}) {
-  const [checked, setChecked] = useState(item.done);
-  const handleChange = () => {
-    setChecked(!checked)
-  }
+function TodoItem({item, index, completeTodo}) {
   return (
     <label className="panel-block">
       <input
         type="checkbox"
-        checked = {checked}
-        onChange = {handleChange}
+        checked={item.done}
+        onClick={() => completeTodo(index)}
       />
-      <span class={checked && "has-text-grey-light"}>
+      <span class={item.done && "has-text-grey-light"}>
         {item.text}
       </span>
     </label>
